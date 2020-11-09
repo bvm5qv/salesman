@@ -1,5 +1,6 @@
 # salesman
 
+* datareader.cpp : example code to read in the data files
 * cities.dat : list of coordinates for 23 cities in North America
 * cities2.dat : 150 cities in North America
 * cities3.dat : 1207 cities in North America
