@@ -53,7 +53,8 @@ def make_plot(infile,optfile=None,region="NA"):
     '''
     
     # Load data
-    polygons    = load_polygons("world.dat")
+    polygons    = load_polygons("world_50m.dat")
+    #polygons    = load_polygons("world.dat") # low res version
     cities_orig = load_xy(infile)
     if optfile: cities_out  = load_xy(optfile)
 
@@ -105,14 +106,14 @@ def make_plot(infile,optfile=None,region="NA"):
 
 def usage():
     print('usage:')
-    print('python routeplot.py cities.dat [cities2.dat] -r [="NA"],"World"')
+    print('python routeplot.py cities.dat [cities2.dat] -w plot the whole world')
         
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='route plotter')
     parser.add_argument('paths', nargs='*',
                         help='''paths to plot: original [optimized]''')
-    parser.add_argument("-r", "--region", choices=("NA", "World"), default="NA",
-                        help="region of the globe to show")
+    parser.add_argument("-w", action='store_true',
+                        help="plo the whole world, default in North America only")
     args = parser.parse_args()
     if len(args.paths)<1:
         print ("at least one input file needed")
@@ -121,7 +122,9 @@ if __name__ == '__main__':
     cities=args.paths[0]
     cities2=None
     if len(args.paths)>1:cities2= args.paths[1]
-    make_plot(cities,cities2,args.region)
+    if args.w: region="World"
+    else: region="NA"
+    make_plot(cities,cities2,region)
 
 
 

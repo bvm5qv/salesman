@@ -10,6 +10,7 @@ Files in this directory:
 * cities1k.dat : 1207 cities in North America
 * cities2k.dat : 2063 cities around the world
 * routeplot.py : code to plot the globe and salesman's path<br>
+* earth.C : (just for fun) plotting the globe in ROOT
 usage:<br>
 python routeplot.py cities.dat [cities2.dat] -r [="NA"],"World"'<br>
 NA = North America, World = Mercator projection of the whole earth
